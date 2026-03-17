@@ -30,15 +30,18 @@ async function setupDiscordSdk() {
   });
 
   // Retrieve an access_token from your activity's server
-  const response = await fetch("/api/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  const response = await fetch(
+    "https://discord-activity-server.discord-activity-1703.workers.dev/api/token",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        code,
+      }),
     },
-    body: JSON.stringify({
-      code,
-    }),
-  });
+  );
   const { access_token } = await response.json();
 
   // Authenticate with Discord client (using the access_token)
@@ -79,7 +82,7 @@ async function appendGuildAvatar() {
   const app = document.querySelector("#app");
 
   // 1. From the HTTP API fetch a list of all of the user's guilds
-  const guilds = await fetch(`https://discord.com/api/v10/users/@me/guilds`, {
+  const guilds = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/token`, {
     headers: {
       // NOTE: we're using the access_token provided by the "authenticate" command
       Authorization: `Bearer ${auth.access_token}`,
