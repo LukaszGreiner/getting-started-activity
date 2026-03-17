@@ -1,12 +1,12 @@
-import {defineConfig} from 'vite';
+import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  envDir: '../',
+  envDir: "../",
   server: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
+      "/api": {
+        target: "http://localhost:3001",
         changeOrigin: true,
         secure: false,
         ws: true,
@@ -15,5 +15,6 @@ export default defineConfig({
     hmr: {
       clientPort: 443,
     },
+    allowedHosts: [""],
   },
 });
