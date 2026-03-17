@@ -82,7 +82,7 @@ async function appendGuildAvatar() {
   const app = document.querySelector("#app");
 
   // 1. From the HTTP API fetch a list of all of the user's guilds
-  const guilds = await fetch(`${import.meta.env.VITE_SERVER_URL}/api/token`, {
+  const guilds = await fetch(`https://discord.com/api/v10/users/@me/guilds`, {
     headers: {
       // NOTE: we're using the access_token provided by the "authenticate" command
       Authorization: `Bearer ${auth.access_token}`,

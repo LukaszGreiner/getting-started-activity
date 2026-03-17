@@ -15,6 +15,6 @@ export default defineConfig({
     hmr: {
       clientPort: 443,
     },
-    allowedHosts: [""],
+    allowedHosts: ["getting-started-activity.pages.dev"],
   },
 });
